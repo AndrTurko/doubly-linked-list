@@ -53,22 +53,21 @@ class LinkedList {
     insertAt(index, data) {
         let count = 0, currentNode = this._head;
         while (currentNode) {
-            if (count === index) {
             if (count === index-1) {
-                let node = new Node(data);
-                node.next = currentNode.next;
-                currentNode.next.prev = node;
-                currentNode.next = node;
-                node.prev = currentNode;
-                currentNode = node;
-                break;
+               let node = new Node(data);
+               node.next = currentNode.next;
+               currentNode.next.prev = node;
+               currentNode.next = node;
+               node.prev = currentNode;
+               currentNode = node;
+               break;
             }
             currentNode = currentNode.next;
             count++;
         }
         return this;
     }
-
+    
     isEmpty() {
         if (!this._head)
             return true;
